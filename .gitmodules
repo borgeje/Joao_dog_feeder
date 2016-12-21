@@ -1,0 +1,3 @@
+[submodule "MySensorsArduinoExamples"]
+	path = MySensorsArduinoExamples
+	url = https://github.com/mysensors/MySensorsArduinoExamples.git
