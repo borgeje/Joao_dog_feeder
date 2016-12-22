@@ -5,11 +5,9 @@ void receive(const MyMessage &message) {
   }
 
   if (message.type == V_LIGHT) {
-     // Change relay state
-     state = message.getBool();
+     state = message.getBool();      // Change relay state
      digitalWrite(RELAY_PIN, state?RELAY_ON:RELAY_OFF);
-     // Store state in eeprom
-     saveState(CHILD_ID, state);
+     saveState(CHILD_ID, state);  // Store state in eeprom
     
      // Write some debug info
      Serial.print("Incoming change for sensor:");

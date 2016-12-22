@@ -55,7 +55,7 @@ const int wemo = 7;
 const int servopin = 8;
 int a = 0;
 
-Bounce debouncer = Bounce(); 
+Bounce BUTTON = Bounce(); 
 int oldValue=0;
 bool state;
 
@@ -66,8 +66,8 @@ void setup()
   pinMode(BUTTON_PIN,INPUT);        // Setup the button
   digitalWrite(BUTTON_PIN,HIGH);   // Activate internal pull-up
   // After setting up the button, setup debouncer
-  debouncer.attach(BUTTON_PIN);
-  debouncer.interval(5);
+  BUTTON.attach(BUTTON_PIN);
+  BUTTON.interval(5);
 
   digitalWrite(RELAY_PIN, RELAY_OFF); // Make sure relays are off when starting up
   pinMode(RELAY_PIN, OUTPUT);         // Then set relay pins in output mode
@@ -75,7 +75,23 @@ void setup()
    // Set relay to last known state (using eeprom storage) 
   state = loadState(CHILD_ID);
   digitalWrite(RELAY_PIN, state?RELAY_ON:RELAY_OFF);
+
+  pinMode(buttonPin, INPUT);
+  pinMode(wemo, INPUT);
+  pinMode(ledPin, OUTPUT);
+  myservo.attach(servopin);  // attaches the servo on pin  to the servo object 
+  myservo.detach();
+  Serial.println("Dispenser NINA");
+  delay(3000);
+  Serial.println("GO");
+
 }
+
+
+
+
+
+
 
 void presentation()  {
   sendSketchInfo("Relay & Button", "1.0");  // Send the sketch version information to the gateway and Controller
@@ -90,8 +106,8 @@ void presentation()  {
 */
 void loop() 
 {
-  debouncer.update();
-  int value = debouncer.read();   //Get the update value
+  BUTTON.update();
+  int value = BUTTON.read();   //Get the update value
   if (value != oldValue && value==0) {
       send(msg.set(state?false:true), true); // Send new state and request ack back
   }
