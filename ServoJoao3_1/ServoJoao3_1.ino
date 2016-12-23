@@ -8,7 +8,7 @@
 Servo myservo;  // create servo object to control a servo 
                 // a maximum of eight servo objects can be created 
  
-int pos = 0;    // variable to store the servo position 
+//int pos = 0;    // variable to store the servo position 
 int madg =100;
 int Serv = 70;
 String inString = "";   
@@ -16,7 +16,7 @@ int buttonPin = A1;
 const int ledPin = 13;
 const int wemo = 7;
 const int servopin = 8;
-int a = 0;
+//int a = 0;
 
 
  
