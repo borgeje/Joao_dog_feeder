@@ -31,6 +31,11 @@
 #define MY_RADIO_NRF24            // Enable and select radio type attached
 #define MY_REPEATER_FEATURE       // Enabled repeater feature for this node
 
+
+//#ifndef MY_RF24_PA_LEVEL
+//#define MY_RF24_PA_LEVEL RF24_PA_MAX
+//#endif
+
 //Libraries, some are project specific
 #include <SPI.h>
 #include <MySensors.h>
